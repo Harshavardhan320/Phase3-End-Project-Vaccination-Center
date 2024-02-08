@@ -45,10 +45,9 @@
 				<th>
 					<a href="citizen-view?id=${data.id}&name=${data.name}&city=${data.city}&doses=${data.doses}">View</a>&nbsp;&nbsp;
 					<a href="citizen-Edit?id=${data.id}&name=${data.name}&city=${data.city}&doses=${data.doses}">Edit</a>&nbsp;&nbsp;
-					<a href="citizen-delete">Delete</a>
+					<a href="citizen-delete?id=${data.id}">Delete</a>
 				</th>
 			</tr>
-		
 		</c:forEach>
 	</table>
 	

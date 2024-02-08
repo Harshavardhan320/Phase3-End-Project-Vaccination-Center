@@ -99,8 +99,17 @@ public class ApplicationServices {
 		citizens.setVaccinationCenter_Id(VaccinationCenter);
 		
 		citizens = citizensRepo.save(citizens);
-		
 		return citizens;
+	}
+
+	//Editing Citizens
+	public Citizens editCitizen(Citizens cit) {
+		Citizens q = citizensRepo.save(cit);
+		return q;
+	}
+
+	public void deleteCitizen(long id) {
+		citizensRepo.deleteById(id);
 	}
 	
 }

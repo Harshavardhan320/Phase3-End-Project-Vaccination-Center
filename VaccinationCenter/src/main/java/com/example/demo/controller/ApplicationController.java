@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -207,5 +208,36 @@ public class ApplicationController {
 		return "citizen-Edit";
 	}
 	
-	
+	//Editing Citizens
+	@GetMapping("editcitizen")
+	public ModelAndView Edit_citizens(ModelMap map, 
+			@RequestParam("id") long id, 
+			@RequestParam("name") String name, 
+			@RequestParam("city") String city,
+			@RequestParam("doses") short doses,
+			@RequestParam("vaccination_center_id") long vaccination_center_id) {
+		ModelAndView mv = new ModelAndView("citizen-Edit");
+		if(id !=0 && !name.equals("") && !city.equals("") && doses != 0 && vaccination_center_id != 0) {
+			Citizens cit = new Citizens();
+			VaccinationCenter va = new VaccinationCenter(vaccination_center_id);
+			
+				cit.setId(id);
+				cit.setName(name);
+				cit.setCity(city); 
+				cit.setDoses(doses);
+				cit.setVaccinationCenter_Id(va);
+			
+			Citizens citizens = applicationServices.editCitizen(cit);
+			map.addAttribute("message", "Edited Successfuly With Name "+citizens.getName()+" <a href='citizens'>citizens Page</a>");
+		}else {
+			map.addAttribute("message", "Fail To Edit <a href='citizens'>citizens Page</a>");
+		}
+		return mv;
+	}
+	@GetMapping("/citizen-delete")
+	public ModelAndView deletecitizen(@RequestParam("id") long id) {
+		ModelAndView mv = new ModelAndView("/citizens");
+		applicationServices.deleteCitizen(id);
+		return mv;
+	}
 }

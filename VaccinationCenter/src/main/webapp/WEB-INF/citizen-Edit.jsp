@@ -16,7 +16,7 @@
 	%>
 	<div style="border:1px solid black;text-align:center">
 		<h2>Edit Citizen</h2>
-		<form action="editcitizen" method="post">
+		<form action="editcitizen" method="get">
 			<input type="hidden" name="id" value="<%out.print(id);%>">
 			<div>
 				<label for="username">Username</label>
@@ -85,7 +85,7 @@
 			</div><br><br>
 			<div>
 				<label for=" vaccination_center_id">Vaccination center</label>
-				<select name="vaccinationCenter_id">
+				<select name="vaccination_center_id">
 					<option value="0">None</option>
 					<c:forEach var="data" items="${vacceinationcenterdata}">
 						<option value="${data.getId()}">${data.getName()}</option>
