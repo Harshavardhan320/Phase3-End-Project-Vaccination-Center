@@ -12,11 +12,11 @@
 		<form action="adminlogin" method="get">
 			<div id="lable">
 				<label for="username">Username :</label>
-				<input type="text" name="username" placeholder="Username" autofocus="autofocus" value="harsha">
+				<input type="text" name="username" placeholder="Username" autofocus="autofocus">
 			</div><br><br>
 			<div id="lable">
 				<label for="Password">Password :</label>
-				<input type="password" name="password" placeholder="Password" value="vardhan">
+				<input type="password" name="password" placeholder="Password" >
 			</div><br><br>
 			<div id="lable">
 				<button>Login</button>
